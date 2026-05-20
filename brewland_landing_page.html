@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrewLand — Tempat Mempelajari & Membeli Kopi Specialty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAF6EE;
+  --cream2:#F2EAD8;
+  --brown-dark:#1C0F05;
+  --brown:#3D2008;
+  --brown-mid:#6B3A1F;
+  --brown-light:#A0611A;
+  --amber:#C8882A;
+  --amber-light:#E8B86D;
+  --green-dark:#1A2E1A;
+  --green:#2D4A2D;
+  --green-mid:#4A7A4A;
+  --text-muted:#7A6A58;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown-dark);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,246,238,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(61,32,8,0.1);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--brown);letter-spacing:-0.5px}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--brown)}
+.nav-cta{background:var(--brown);color:var(--cream);padding:10px 22px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--brown-mid)}
+
+/* HERO */
+.hero{min-height:100vh;padding:0 5%;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg, var(--cream) 0%, var(--cream2) 60%, #E8D5B5 100%)}
+.hero-bg-circle{position:absolute;border-radius:50%;background:rgba(168,97,26,0.06)}
+.hero-bg-c1{width:600px;height:600px;top:-200px;right:-150px}
+.hero-bg-c2{width:400px;height:400px;bottom:-100px;left:-100px;background:rgba(42,68,42,0.04)}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding-top:80px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(61,32,8,0.08);color:var(--brown);padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;margin-bottom:28px;border:1px solid rgba(61,32,8,0.12)}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--green-mid);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,58px);font-weight:900;line-height:1.1;color:var(--brown-dark);margin-bottom:24px}
+.hero h1 em{color:var(--amber);font-style:italic}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-muted);margin-bottom:40px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--brown);color:var(--cream);padding:14px 30px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;border:2px solid var(--brown)}
+.btn-primary:hover{background:var(--brown-dark);border-color:var(--brown-dark);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--brown);padding:14px 30px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(61,32,8,0.3);transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--brown);background:rgba(61,32,8,0.04)}
+.hero-visual{position:relative}
+.hero-card-main{background:var(--brown-dark);border-radius:24px;padding:32px;color:var(--cream);position:relative;overflow:hidden}
+.hero-card-main::before{content:'';position:absolute;top:-80px;right:-80px;width:250px;height:250px;border-radius:50%;background:rgba(200,136,42,0.15)}
+.coffee-icon{font-size:72px;margin-bottom:16px;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3))}
+.hero-card-main h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px}
+.hero-card-main p{font-size:14px;opacity:0.7;line-height:1.6}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.hero-stat{background:rgba(255,255,255,0.08);border-radius:14px;padding:16px;text-align:center}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--amber-light)}
+.hero-stat-label{font-size:12px;opacity:0.6;margin-top:2px}
+.hero-card-float{position:absolute;bottom:-20px;left:-30px;background:var(--white);border-radius:16px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:flex;align-items:center;gap:12px}
+.star-row{color:var(--amber);font-size:13px}
+.float-text{font-size:12px;color:var(--text-muted)}
+.float-text strong{display:block;font-size:14px;color:var(--brown-dark);font-weight:600}
+
+/* SECTION GENERIC */
+section{padding:90px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;line-height:1.2;color:var(--brown-dark);margin-bottom:16px}
+.section-sub{font-size:16px;line-height:1.7;color:var(--text-muted);max-width:560px}
+
+/* AIDA / PROBLEM-SOLUTION */
+.aida-section{background:var(--brown-dark);color:var(--cream)}
+.aida-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.aida-left .section-label{color:var(--amber-light)}
+.aida-left .section-title{color:var(--cream)}
+.aida-quote{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;line-height:1.6;color:var(--amber-light);border-left:3px solid var(--amber);padding-left:24px;margin:28px 0}
+.problem-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;margin-bottom:16px}
+.problem-card h4{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--amber-light)}
+.problem-card p{font-size:14px;line-height:1.7;opacity:0.75}
+.solution-card{background:var(--amber);border-radius:20px;padding:28px}
+.solution-card h4{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--brown-dark)}
+.solution-card p{font-size:14px;line-height:1.7;color:var(--brown)}
+
+/* USP / BENEFITS */
+.usp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:48px}
+.usp-card{background:var(--white);border-radius:20px;padding:28px;border:1px solid rgba(61,32,8,0.08);transition:all 0.2s;cursor:default}
+.usp-card:hover{border-color:rgba(200,136,42,0.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(61,32,8,0.08)}
+.usp-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+.usp-icon.green{background:rgba(45,74,45,0.1)}
+.usp-icon.amber{background:rgba(200,136,42,0.1)}
+.usp-icon.brown{background:rgba(61,32,8,0.08)}
+.usp-icon.teal{background:rgba(26,115,100,0.1)}
+.usp-card h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:10px;color:var(--brown-dark)}
+.usp-card p{font-size:14px;line-height:1.7;color:var(--text-muted)}
+
+/* FEATURED */
+.featured-section{background:var(--cream2)}
+.featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.product-card{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid rgba(61,32,8,0.06);transition:all 0.2s}
+.product-card:hover{box-shadow:0 16px 48px rgba(61,32,8,0.1);transform:translateY(-3px)}
+.product-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative}
+.product-img.gayo{background:linear-gradient(135deg,#3D2008,#6B3A1F)}
+.product-img.brew{background:linear-gradient(135deg,#1A2E1A,#2D4A2D)}
+.product-img.video{background:linear-gradient(135deg,#1C1C1C,#3D3D3D)}
+.product-badge{position:absolute;top:12px;right:12px;background:var(--amber);color:var(--brown-dark);font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px}
+.video-badge{background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);color:white;border:1px solid rgba(255,255,255,0.2)}
+.play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;font-size:20px}
+.product-info{padding:22px}
+.product-tag{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.product-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brown-dark);margin-bottom:8px}
+.product-notes{font-size:13px;color:var(--text-muted);line-height:1.5}
+.product-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:600;color:var(--brown);text-decoration:none}
+.product-cta:hover{color:var(--amber)}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.testi-card{background:var(--white);border-radius:20px;padding:28px;border:1px solid rgba(61,32,8,0.07)}
+.testi-stars{color:var(--amber);font-size:15px;margin-bottom:16px}
+.testi-quote{font-size:15px;line-height:1.75;color:var(--brown-dark);font-style:italic;margin-bottom:20px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white}
+.tav-1{background:var(--amber)}
+.tav-2{background:var(--green)}
+.tav-3{background:var(--brown-mid)}
+.testi-name{font-weight:600;font-size:14px;color:var(--brown-dark)}
+.testi-city{font-size:12px;color:var(--text-muted)}
+
+/* TRUST */
+.trust-section{background:var(--brown-dark);color:var(--cream)}
+.trust-inner{max-width:1200px;margin:0 auto;text-align:center}
+.trust-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:48px}
+.trust-badge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:18px 28px;display:flex;align-items:center;gap:12px;transition:all 0.2s}
+.trust-badge:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,136,42,0.4)}
+.trust-icon{font-size:26px}
+.trust-text strong{display:block;font-size:14px;font-weight:600;color:var(--cream)}
+.trust-text span{font-size:12px;opacity:0.55}
+
+/* CTA SECTION */
+.cta-section{padding:100px 5%;text-align:center;background:var(--cream)}
+.cta-inner{max-width:700px;margin:0 auto}
+.cta-inner .section-title{font-size:clamp(32px,4vw,50px)}
+.cta-inner p{font-size:18px;line-height:1.7;color:var(--text-muted);margin:20px 0 40px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--brown-dark);color:var(--cream);padding:50px 5% 28px;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;margin-bottom:10px}
+.footer-logo span{color:var(--amber)}
+.footer-tagline{font-size:14px;opacity:0.5;margin-bottom:30px}
+.footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:30px}
+.footer-links a{font-size:13px;color:rgba(250,246,238,0.5);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--amber-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;font-size:12px;opacity:0.35}
+.hashtag{color:var(--amber-light);opacity:1}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner > *{animation:fadeUp 0.7s ease both}
+.hero-inner > *:nth-child(2){animation-delay:0.15s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Brew<span>Land</span></div>
+    <ul class="nav-links">
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#edukasi">Edukasi</a></li>
+      <li><a href="#komunitas">Komunitas</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Mulai Berlangganan</a>
+  </div>
+</nav>
+
+<!-- 1. HERO (Hero Image + Headline + Deskripsi + CTA) -->
+<section class="hero" id="home">
+  <div class="hero-bg-circle hero-bg-c1"></div>
+  <div class="hero-bg-circle hero-bg-c2"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Kopi Specialty Premium Indonesia
+      </div>
+      <h1>Akademi & Marketplace <em>Kopi Specialty</em> Terbaik</h1>
+      <p class="hero-sub">Dari biji hingga seduhan sempurna — temukan kopi specialty dari petani lokal, pelajari teknik brewing barista, dan bergabung dengan komunitas pencinta kopi Indonesia.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-primary">Ikuti Coffee Quiz ✦</a>
+        <a href="#produk" class="btn-secondary">Jelajahi Koleksi</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <span class="coffee-icon">☕</span>
+        <h3>BrewBox Starter Kit</h3>
+        <p>V60, filter premium, kopi sample Gayo Natural, dan panduan seduh langkah demi langkah dari barista juara.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Coffee Lovers</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">SCA 84+</div>
+            <div class="hero-stat-label">Specialty Grade</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">≤7 Hari</div>
+            <div class="hero-stat-label">Fresh Roasted</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">30+</div>
+            <div class="hero-stat-label">Video Tutorial</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-float">
+        <div style="font-size:28px">🌱</div>
+        <div>
+          <strong class="float-text">Direct Trade</strong>
+          <span class="float-text">Langsung dari petani lokal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM & SOLUTION / COPYWRITING (AIDA) -->
+<section class="aida-section" style="padding:90px 5%">
+  <div class="aida-inner">
+    <div class="aida-left">
+      <p class="section-label">Dari Penasaran Menuju Seduhan Sempurna</p>
+      <h2 class="section-title" style="color:var(--cream)">Masih Menyeduh Kopi dengan <em style="color:var(--amber-light);font-style:italic">Tebakan</em>?</h2>
+      <blockquote class="aida-quote">
+        "Stop menyeduh kopi dengan cara yang sama dan mengharapkan hasil berbeda. Rahasia seduhan barista ada di sini."
+      </blockquote>
+      <p style="font-size:15px;line-height:1.8;opacity:0.7">Jutaan pecinta kopi di Indonesia masih kesulitan mengakses biji kopi specialty berkualitas sekaligus edukasi yang tepat untuk menyeduhnya. BrewLand hadir sebagai solusi lengkap — mulai dari biji terbaik, peralatan premium, hingga akademi seduh yang terstruktur.</p>
+    </div>
+    <div class="aida-right">
+      <div class="problem-card">
+        <h4>😩 Masalah yang Kamu Rasakan</h4>
+        <p>Bingung cara menyeduh kopi seenak buatan barista? Sering beli kopi mahal tapi hasil seduhan pahit & flat? Sulit menemukan edukasi brewing yang terstruktur dan alat berkualitas di satu tempat?</p>
+      </div>
+      <div class="solution-card">
+        <h4>✦ Solusi BrewLand</h4>
+        <p>BrewBox + Akademi Seduh: panduan langkah demi langkah dari barista berpengalaman, biji specialty grade langsung dari petani, aksesori brewing premium, dan komunitas aktif untuk bertukar resep & pengalaman.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. USP / BENEFITS -->
+<section id="edukasi">
+  <div class="section-inner">
+    <p class="section-label">Mengapa Harus BrewLand?</p>
+    <h2 class="section-title">Keunggulan yang Tidak Kamu Temukan<br>di Tempat Lain</h2>
+    <p class="section-sub">Kami bukan sekadar marketplace kopi. BrewLand adalah ekosistem lengkap untuk perjalanan kopi kamu.</p>
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon green">🌿</div>
+        <h3>100% Kopi Specialty</h3>
+        <p>Semua biji kopi kami berskor SCA di atas 84, dipilih langsung dari petani terbaik Indonesia, dan diroasting fresh sebelum dikirim.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon amber">🎓</div>
+        <h3>Akademi Seduh Kopi</h3>
+        <p>Kursus online terstruktur, 30+ video tutorial metode brewing, dan panduan interaktif dari barista juara nasional. Belajar dari nol hingga mahir.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon brown">🤝</div>
+        <h3>Dukung Petani Lokal</h3>
+        <p>Model direct trade & sustainability yang transparan. Setiap pembelian kamu langsung memberdayakan petani kopi lokal di Gayo, Toraja, dan Flores.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon teal">📦</div>
+        <h3>Langganan BrewBox</h3>
+        <p>Kopi specialty fresh roasted, aksesori brewing, dan panduan eksklusif hadir di depan pintumu setiap bulan. Nikmati ritual kopi yang konsisten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. FEATURED SECTION -->
+<section class="featured-section" id="produk">
+  <div class="section-inner">
+    <p class="section-label">Koleksi & Edukasi Pilihan</p>
+    <h2 class="section-title">Produk Unggulan & Konten Terbaru</h2>
+    <p class="section-sub">Dari biji pilihan hingga panduan seduh, semua tersedia untuk meningkatkan pengalaman kopi kamu.</p>
+    <div class="featured-grid">
+      <div class="product-card">
+        <div class="product-img gayo">
+          <span style="font-size:80px">☕</span>
+          <span class="product-badge">Specialty Grade</span>
+        </div>
+        <div class="product-info">
+          <div class="product-tag">Kopi Single Origin</div>
+          <div class="product-name">Gayo Natural Process</div>
+          <div class="product-notes">Notes: berry, coklat gelap, body tebal<br>Ketinggian 1400–1700 mdpl • Aceh Tengah</div>
+          <a href="#cta" class="product-cta">Beli Sekarang →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img brew">
+          <span style="font-size:70px">🫙</span>
+          <span class="product-badge" style="background:var(--green);color:white">Best Seller</span>
+        </div>
+        <div class="product-info">
+          <div class="product-tag">Starter Kit</div>
+          <div class="product-name">BrewBox Starter</div>
+          <div class="product-notes">V60 ceramic + 100 filter + kopi sample 4 origin + panduan seduh interaktif + video eksklusif</div>
+          <a href="#cta" class="product-cta">Dapatkan BrewBox →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img video" style="position:relative">
+          <div class="play-btn">▶</div>
+          <span class="product-badge video-badge">12 Menit</span>
+        </div>
+        <div class="product-info">
+          <div class="product-tag">Video Tutorial</div>
+          <div class="product-name">Metode V60 — Dari Nol</div>
+          <div class="product-notes">Tips dan teknik dari barista juara nasional. Pelajari grind size, rasio air, dan teknik pouring yang menghasilkan kopi jernih & fruity.</div>
+          <a href="#cta" class="product-cta">Tonton Preview →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SOCIAL PROOF / TESTIMONI -->
+<section id="komunitas">
+  <div class="section-inner">
+    <p class="section-label">Komunitas Pecinta Kopi Bicara</p>
+    <h2 class="section-title">Ribuan Coffee Lover<br>Sudah Merasakan Perbedaannya</h2>
+    <p class="section-sub">Bergabunglah dengan komunitas #SeduhDenganPengetahuan — tempat berbagi resep, pengalaman, dan cinta terhadap kopi specialty.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Sebagai coffee enthusiast yang lama nyari platform ini — BrewLand bukan cuma tempat belanja, tapi beneran belajar. BrewBox-nya lengkap banget, kopinya segar, panduan brewingnya detail banget!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar tav-1">AS</div>
+          <div>
+            <div class="testi-name">Aisyah Salsabila</div>
+            <div class="testi-city">Coffee Enthusiast · Surabaya</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Dulu seduhanku selalu pahit, nggak tau kenapa. Setelah ikut kelas online BrewLand dan pakai panduannya, sekarang V60-ku bisa jernih & fruity. Literally game changer buat aku!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar tav-2">RP</div>
+          <div>
+            <div class="testi-name">Raditya Pratama</div>
+            <div class="testi-city">Home Barista · Jakarta</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Seneng banget tahu kopi yang kubeli langsung dari petani lokal. Dan kualitasnya specialty grade beneran! Langganan BrewBox udah jadi ritual favorit aku tiap bulan sekarang."</p>
+        <div class="testi-author">
+          <div class="testi-avatar tav-3">MW</div>
+          <div>
+            <div class="testi-name">Melati Wulandari</div>
+            <div class="testi-city">Sustainability Advocate · Bandung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TRUST ELEMENTS -->
+<section class="trust-section" style="padding:90px 5%">
+  <div class="trust-inner">
+    <p class="section-label" style="color:var(--amber-light)">Jaminan Kualitas & Kepercayaan</p>
+    <h2 class="section-title" style="color:var(--cream)">Belanja dengan Tenang,<br>Seduh dengan Yakin</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;color:rgba(250,246,238,0.6)">BrewLand berkomitmen pada kualitas dan transparansi dari hulu ke hilir.</p>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <span class="trust-icon">☕</span>
+        <div class="trust-text">
+          <strong>Freshly Roasted</strong>
+          <span>Dikirim ≤ 7 hari pasca roasting</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">🏅</span>
+        <div class="trust-text">
+          <strong>Specialty Grade SCA</strong>
+          <span>Skor cupping di atas 84 poin</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">🔒</span>
+        <div class="trust-text">
+          <strong>Transaksi Aman</strong>
+          <span>Terenkripsi & terpercaya</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">🚚</span>
+        <div class="trust-text">
+          <strong>Pengiriman Express</strong>
+          <span>Garansi retur 7 hari</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-icon">💬</span>
+        <div class="trust-text">
+          <strong>Dukungan 24/7</strong>
+          <span>Tim siap membantu kamu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CTA FINAL -->
+<section class="cta-section" id="cta">
+  <div class="cta-inner">
+    <p class="section-label" style="text-align:center">Mulai Perjalanan Kopi Kamu</p>
+    <h2 class="section-title">Siap Menyeduh Kopi Seenak Buatan <em style="color:var(--amber);font-style:italic">Barista</em>?</h2>
+    <p>Ikuti Coffee Quiz gratis untuk mengetahui profil kopi idealmu, atau langsung mulai berlangganan BrewBox dan rasakan perbedaannya.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary" style="font-size:16px;padding:16px 36px">☕ Ikuti Coffee Quiz — Gratis</a>
+      <a href="#" class="btn-secondary" style="font-size:16px;padding:16px 36px">📦 Mulai Berlangganan</a>
+    </div>
+    <p style="margin-top:20px;font-size:13px;color:var(--text-muted)">Tidak ada komitmen jangka panjang. Batalkan kapan saja.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Brew<span>Land</span></div>
+  <div class="footer-tagline">Tempat Mempelajari & Membeli Kopi Specialty</div>
+  <div class="footer-links">
+    <a href="#">Tentang Kami</a>
+    <a href="#">Produk</a>
+    <a href="#">Akademi</a>
+    <a href="#">Komunitas</a>
+    <a href="#">Blog</a>
+    <a href="#">Kebijakan Privasi</a>
+  </div>
+  <div class="footer-bottom">
+    <span class="hashtag">#SeduhDenganPengetahuan</span> &nbsp;|&nbsp; © 2025 BrewLand · All rights reserved · Ahmad Rafdy · M. Noer Attalah · Aji Ilham
+  </div>
+</footer>
+
+</body>
+</html>
